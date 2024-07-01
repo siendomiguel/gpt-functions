@@ -17,9 +17,16 @@ routes.get('/assistant/:id', async (req, res) => {
 
 routes.post('/assistant', async (req, res) => {
   const { message, threadId, userID } = req.body;
-  const resAssitant = await runAssistant(threadId, message, userID);
-  console.log('respuesta del asistente: ---', resAssitant);
-  res.send(resAssitant);
+  try {
+    const resAssitant = await runAssistant(threadId, message, userID);
+    console.log('respuesta del asistente: ---', resAssitant);
+    res.json(resAssitant);
+  } catch (error) {
+    console.error('Error al ejecutar el asistente:', error);
+    res
+      .status(500)
+      .json({ error: 'Ocurrió un error al procesar la solicitud' });
+  }
 });
 
 routes.post('/delete-thread/:id', async (req, res) => {
