@@ -20,7 +20,7 @@ async function get_weather(location) {
 async function getConsulta(userID) {
   try {
     const response = await fetch(
-      `https://7801-190-61-47-58.ngrok-free.app/${userID}`,
+      `https://7801-190-61-47-58.ngrok-free.app/v1/consulta/${userID}`,
     );
     if (!response.ok) {
       throw new Error(`Failed to fetch consultation details for ID: ${userID}`);
