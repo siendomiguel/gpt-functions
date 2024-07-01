@@ -15,6 +15,11 @@ routes.get('/assistant/:id', async (req, res) => {
   res.send(assistant);
 });
 
+routes.get('/create-thread', async (req, res) => {
+  const threadId = await createThread();
+  res.json({ threadId: threadId });
+});
+
 routes.post('/assistant', async (req, res) => {
   const { message, threadId, userID, assistantId } = req.body;
   try {
