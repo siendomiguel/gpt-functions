@@ -16,9 +16,14 @@ routes.get('/assistant/:id', async (req, res) => {
 });
 
 routes.post('/assistant', async (req, res) => {
-  const { message, threadId, userID } = req.body;
+  const { message, threadId, userID, assistantId } = req.body;
   try {
-    const resAssitant = await runAssistant(threadId, message, userID);
+    const resAssitant = await runAssistant(
+      threadId,
+      message,
+      userID,
+      assistantId,
+    );
     console.log('respuesta del asistente: ---', resAssitant);
     res.json({ response: resAssitant });
   } catch (error) {

@@ -276,8 +276,8 @@ export async function runId(threadId, assistantId) {
 }
  */
 
-export async function runAssistant(threadId, messageUser, userID) {
-  const assistantId = process.env.ASSISTANT_ID_2;
+export async function runAssistant(threadId, messageUser, userID, assistantId) {
+  const assistantId = assistantId || process.env.ASSISTANT_ID;
   const combinedMessage = `${messageUser} [UserID: ${userID}]`; // Concatenar el userID al mensaje del usuario
 
   return new Promise(async (resolve, reject) => {
