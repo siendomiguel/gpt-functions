@@ -20,7 +20,7 @@ routes.post('/assistant', async (req, res) => {
   try {
     const resAssitant = await runAssistant(threadId, message, userID);
     console.log('respuesta del asistente: ---', resAssitant);
-    res.json(resAssitant);
+    res.json({ response: resAssitant });
   } catch (error) {
     console.error('Error al ejecutar el asistente:', error);
     res
